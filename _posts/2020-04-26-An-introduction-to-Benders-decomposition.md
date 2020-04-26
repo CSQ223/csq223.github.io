@@ -27,5 +27,5 @@ e=mc^2 \tag{2}
 \end{equation}
 
 \begin{equation}
-\sum_{i\in V}\sum{j\in V}x_{ij}^k=1 \tag{3}
+\sum_{i\in V}\sum_{j\in V}x_{ij}^k=1 \tag{3}
 \end{equation}
