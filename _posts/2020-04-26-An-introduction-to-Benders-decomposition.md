@@ -10,9 +10,23 @@ tags:								#标签
     - OR
 ---
 
+<head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head>
+
 ## Hey
 >这是我的第一篇博客。
 
 进入你的博客主页，新的文章将会出现在你的主页上.
 
 ![](http://latex.codecogs.com/gif.latex?\\frac{1}{1+sin(x)})
+
+$e=mc^2$
