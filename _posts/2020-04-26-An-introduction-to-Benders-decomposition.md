@@ -41,6 +41,7 @@ window.addEventListener('load', function() {
 
 ```c++
 #include<iostream>
+
 int main() {
     return 0;
 }
