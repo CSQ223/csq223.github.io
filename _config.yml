@@ -97,9 +97,9 @@ service-worker: true
 
 
 # Friends
-friends: [
+#friends: [
 #    {
 #        title: "Github",
 #        href: "https://github.com/CSQ223"
 #    }
-]
+#]
