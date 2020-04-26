@@ -33,9 +33,16 @@ e=mc^2 \tag{2}
 
 
 
-```
+```js
 window.addEventListener('load', function() {
   console.log('window loaded');
 });
+```
+
+```c++
+#include<iostream>
+int main() {
+    return 0;
+}
 ```
 
