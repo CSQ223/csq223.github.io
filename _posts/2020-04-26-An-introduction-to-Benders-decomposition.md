@@ -26,6 +26,12 @@ e=mc^2 \tag{1}
 e=mc^2 \tag{2}
 \end{equation}
 
+```
+window.addEventListener('load', function() {
+  console.log('window loaded');
+});
+```
+
 \begin{equation}
 \sum_{i\in V}\sum_{j\in V}x_{ij}^k=1 \tag{3}
 \end{equation}
