@@ -17,6 +17,8 @@ tags:								#标签
 
 进入你的博客主页，新的文章将会出现在你的主页上.
 
-![](http://latex.codecogs.com/gif.latex?\\frac{1}{1+sin(x)})
-
 $e=mc^2$
+
+\begin{equation}
+e=mc^2
+\end{equation}
