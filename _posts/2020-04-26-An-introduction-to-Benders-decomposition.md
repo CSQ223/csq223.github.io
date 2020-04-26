@@ -17,8 +17,7 @@ tags:								#标签
 
 进入你的博客主页，新的文章将会出现在你的主页上.
 
-$e=mc^2$
 
 \begin{equation}
-e=mc^2
+e=mc^2 \tag{1-1}
 \end{equation}
