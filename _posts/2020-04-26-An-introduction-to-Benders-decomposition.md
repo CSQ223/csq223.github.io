@@ -1,4 +1,3 @@
-
 ---
 layout:     post   				    # 使用的布局（不需要改）
 title:      An Introduction to Benders Decomposition in Solving Large Mixed Integer Linear Problem				# 标题 
