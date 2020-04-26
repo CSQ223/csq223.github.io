@@ -19,5 +19,13 @@ tags:								#标签
 
 
 \begin{equation}
-e=mc^2 \tag{1-1}
+e=mc^2 \tag{1}
+\end{equation}
+
+\begin{equation}
+e=mc^2 \tag{2}
+\end{equation}
+
+\begin{equation}
+sum_{i\in V}\sum{j\in V}x_{ij}^k=1 \tag{3}
 \end{equation}
