@@ -98,8 +98,8 @@ service-worker: true
 
 # Friends
 friends: [
-    {
-        title: "Github",
-        href: "https://github.com/CSQ223"
-    }
+#    {
+#        title: "Github",
+#        href: "https://github.com/CSQ223"
+#    }
 ]
