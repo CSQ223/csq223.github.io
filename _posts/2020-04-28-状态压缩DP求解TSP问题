@@ -1,16 +1,18 @@
+
 ---
-layout:     post   				    # 使用的布局（不需要改）
-title:      状态压缩DP求解TSP问题				# 标题 
-subtitle:   动态规划，状态压缩，TSP #副标题
-date:       2020-04-28 				# 时间
-author:     Lewis XU 						# 作者
-header-img: img/post-bg-hacker.jpg 	#这篇文章标题背景图片
-catalog: true 						# 是否归档
-tags:								#标签
-    - 运筹优化
-    - 动态规划
-    - 刷题目
+layout:     post
+title:      状态压缩DP求解TSP问题
+subtitle:   动态规划，状态压缩，TSP
+date:       2020-04-28
+author:     Lewis XU
+header-img: img/post-bg-hacker.jpg
+catalog: true
+tags:
+    - Linux
+    - 终端
+    - Git
 ---
+
 
 
 # TSP问题：快手真题
@@ -19,4 +21,4 @@ tags:								#标签
 
 输入描述：
 
->城市个数$n$（1<$n$≤20），城市间的车票价钱 $n$行$n$列的矩阵 $m[n][n]$
+> 城市个数$n$（1<$n$≤20），城市间的车票价钱 $n$行$n$列的矩阵 $m[n][n]$
