@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      状态压缩DP求解TSP问题
-subtitle:   动态规划，状态压缩，TSP
-date:       2020-04-28
-author:     Lewis XU
-header-img: img/post-bg-hacker.jpg
+title:      Git常用指令整理
+subtitle:   个人常用的 Git 指令
+date:       2020-04-27
+author:     BY
+header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
     - Linux
@@ -13,11 +13,4 @@ tags:
 ---
 
 
-
-# TSP问题：快手真题
-
-小明目前在做一份毕业旅行的规划。打算从北京出发，分别去若干个城市，然后再回到北京，每个城市之间均乘坐高铁，且每个城市只去一次。由于经费有限，希望能够通过合理的路线安排尽可能的省一些路上的花销。给定一组城市和每对城市之间的火车票的价钱，找到每个城市只访问一次并返回起点的最小车费花销。
-
-输入描述：
-
-> 城市个数$n$（1<$n$≤20），城市间的车票价钱 $n$行$n$列的矩阵 $m[n][n]$
+# GitHub创建仓库提示代码
