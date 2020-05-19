@@ -136,5 +136,68 @@ z_1, z_2, z_3 \geqslant 0
 \begin{equation}
 a_{1,new},a_{2,new},a_{3,new} \in \mathcal{Z}^+
 \end{equation}
+解得$\a_{i,new} = [a_{1,new},a_{2,new},a_{3,new}] = [0,1,1]$，并且子问题的目标函数为-0.5<0,需要继续迭代。
 
+所以，添加新变量$z_4$到主问题模型：
+\begin{equation}
+\min z_1 + z_2 + z_3 + z_4
+\end{equation}
+\begin{equation}
+5z_1 + 0z_2 + 0z_3 + 0z_4 \leqslant 25
+\end{equation}
+\begin{equation}
+0z_1 + 2z_2 + 0z_3 + z_4\leqslant 20
+\end{equation}
+\begin{equation}
+0z_1 + 0z_2 + 1z_3 + z_4 \leqslant 18
+\end{equation}
+\begin{equation}
+z_1, z_2, z_3,z_4 \geqslant 0
+\end{equation}
 
+## 第二次迭代
+继续求解主模型，得到各个约束的对偶值$\pi = [\pi_1, \pi_2, \pi_3] = [0.2,0.5,0.5]$.
+所以，子问题为：
+\begin{equation}
+\min 1-0.2a_{1,new}-0.5a_{2,new}-0.5a_{3,new}
+\end{equation}
+\begin{equation}
+3a_{1,new}+6a_{2,new}+9a_{3,new}\leqslant 17
+\end{equation}
+\begin{equation}
+a_{1,new},a_{2,new},a_{3,new} \in \mathcal{Z}^+
+\end{equation}
+解得$\a_{i,new} = [a_{1,new},a_{2,new},a_{3,new}] = [1,2,0]$，并且子问题的目标函数为-0.2<0,需要继续迭代。
+
+所以，添加新变量$z_5$到主问题模型：
+\begin{equation}
+\min z_1 + z_2 + z_3 + z_4 + z_5
+\end{equation}
+\begin{equation}
+5z_1 + 0z_2 + 0z_3 + 0z_4 + z_5 \leqslant 25
+\end{equation}
+\begin{equation}
+0z_1 + 2z_2 + 0z_3 + z_4 + 2z_5\leqslant 20
+\end{equation}
+\begin{equation}
+0z_1 + 0z_2 + 1z_3 + z_4 + 0z_5\leqslant 18
+\end{equation}
+\begin{equation}
+z_1, z_2, z_3,z_4 \geqslant 0
+\end{equation}
+
+## 第三次迭代
+继续求解主模型，得到各个约束的对偶值$\pi = [\pi_1, \pi_2, \pi_3] = [0.2,0.4,0.6]$.
+所以，子问题为：
+\begin{equation}
+\min 1-0.2a_{1,new}-0.4a_{2,new}-0.6a_{3,new}
+\end{equation}
+\begin{equation}
+3a_{1,new}+6a_{2,new}+9a_{3,new}\leqslant 17
+\end{equation}
+\begin{equation}
+a_{1,new},a_{2,new},a_{3,new} \in \mathcal{Z}^+
+\end{equation}
+解得$\a_{i,new} = [a_{1,new},a_{2,new},a_{3,new}] = [1,2,0]$，并且子问题的目标函数为0,不需要继续迭代。
+
+所以第二次得到的主模型为最终模型，求解得到$\sum_{i=1}^{5} z_i = 2$。
