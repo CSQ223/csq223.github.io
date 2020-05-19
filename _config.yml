@@ -5,7 +5,7 @@ header-img: img/post-bg-desk.jpg
 email: xuwei3893@gmail.com
 description: "My heart is free and, have courage to follow it!"
 keyword: "Lewis XU博客, Lewis XU, 徐巍"
-url: "http://csq223.github.io"          # your host, for absolute URL
+url: "https://csq223.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/CSQ223/csq223.github.io.git" # you code repository
 
