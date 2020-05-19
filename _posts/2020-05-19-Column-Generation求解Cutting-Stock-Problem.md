@@ -71,20 +71,57 @@ subject to:
 \sum_{p\in P'}a_{ip}z_p\geqslant b_i, \forall i\in I \label{eq:rmpdemand}\tag{7}
 \end{equation}
 \begin{equation}
-z_p\geqslant 0,\forall p\in P' \label{eq:rmpz}\tag{6}
+z_p\geqslant 0,\forall p\in P' \label{eq:rmpz}\tag{8}
 \end{equation}
 
->如何寻找初始解？只要将每根钢管按照同一种长度来切，一定能切出满足条件的组合。
-
-所以初始解的方式：
-
-1. 全切成3m以满足3m的需求，需要切$\lceil \frac{25}{\lfloor\frac{17}{3}\rfloor} \rceil$= 5根;
-2. 全切成6m以满足6m的需求，需要切$\lceil \frac{20}{\lfloor\frac{17}{6}\rfloor} \rceil$= 10根;
-3. 全切成9m以满足9m的需求，需要切$\lceil \frac{18}{\lfloor\frac{17}{9}\rfloor} \rceil$= 18根。
+>如何寻找初始解？
 
 显然，这种切割方式过于粗糙。下面，通过子问题来生成更多的可行方案，将这些粗糙的方案踢出去（实际上就是单纯形法的出基）。
 
 ## 子问题
-子问题是求一种可行的切割方案，使得把这种方案添加进去之后（实际上就是单纯形法的入基），主问题的目标函数能下降最多，所以正如引言所说，子问题的目标函数是使主问题的校验数最小。所以，子问题的模型如下：
+子问题是求一种可行的切割方案，使得把这种方案添加进去之后（实际上就是单纯形法的入基），主问题的目标函数能下降最多，所以正如引言所说，子问题的目标函数是使主问题的校验数最小。设$\pi_i$是主问题中第$i$个约束的对偶值，所以，子问题的模型如下： 
 
+\begin{equation}
+\min 1-\sum_{i\in I}a_{ip}\pi_i \label{eq:spobj}\tag{9}
+\end{equation}
+subject to:
+\begin{equation}
+\sum_{i\in I}l_i a_{ip} \leqslant L \label{eq:splength}\tag{10}
+\end{equation}
+\begin{equation}
+a_{ip}\in\mathcal{Z}_+, \forall i\in I \label{eq:spa}\tag{11}
+\end{equation}
+
+公式（\ref{eq:splength}）就是限制切割方案的长度，目标函数(\ref{eq:spobj})则是主问题的检验数。
+
+不断的进行迭代，直到子问题的解大于0（对于最小化问题），就可以结束了。
+
+
+# 算例
+
+## 寻找初始解
+只要将每根钢管按照同一种长度来切，一定能切出满足条件的组合。
+
+所以初始解的方式：
+
+1. 全切成3m以满足3m的需求，一根可以切出$\lfloor\frac{17}{3}\rfloor$= 5根;
+2. 全切成6m以满足6m的需求，一根可以切出$\lfloor\frac{17}{6}\rfloor$= 2根;
+3. 全切成9m以满足9m的需求，一根可以切出$\lfloor\frac{17}{9}\rfloor$= 1根。
+
+也就是说，初始主问题模型：
+\begin{equation}
+\min z_1 + z_2 + z_3
+\end{equation}
+\begin{equation}
+5z_1 + 0z_2 + 0z_3 \leqslant 25
+\end{equation}
+\begin{equation}
+0z_1 + 2z_2 + 0z_3 \leqslant 20
+\end{equation}
+\begin{equation}
+0z_1 + 0z_2 + 1z_3 \leqslant 18
+\end{equation}
+\begin{equation}
+z_1, z_2, z_3 \geqslant 0
+\end{equation}
 
