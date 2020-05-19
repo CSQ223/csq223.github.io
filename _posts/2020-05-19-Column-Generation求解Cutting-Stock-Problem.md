@@ -222,7 +222,7 @@ z_1, z_2, z_3,z_4 \geqslant 0
 所以第二次得到的主模型为最终模型，求解得到$\sum_{i=1}^{5} z_i = 24$。
 
 ## 运行截图
-
+![Cutting stock problem]("/img/cuttingstock.png")
 
 
 ## 规律总结
