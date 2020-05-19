@@ -19,23 +19,23 @@ tags:								#标签
 在本文中，假定每根钢管长度$L=17m$，需要3米、6米、9米的钢管各25、20、18根，即$l = [3m,6m,9m]$，$b=[25,20,18]$。
 
 # 整数规划模型
-设给定$N$根长度为$L$的钢管，有$I$种钢管的需求，长度为$l_i$的需求量为$b_i$根。记$y_n$为0-1变量，如果第$n$根钢管被使用为1，否则为0。记$x_i^n$为第$n$根钢管被切了长度为$l_i$的长度的数量。由此，建立以下数学模型：
+设给定$N$根长度为$L$的钢管，有$I$种钢管的需求，长度为$l_i$的需求量为$b_i$根。记$y_n$为0-1变量，如果第$n$根钢管被使用为1，否则为0。记$x_i^n$为第$n$根钢管被切了长度为$l_i$的长度的数量。由此，建立以下数学模型\ref{eq:obj}-\label{eq:y}：
 
 \begin{equation}
 \min\sum_{n\in N}y_n \label{eq:obj}\tag{1}
 \end{equation}
 S.T.
 \begin{equation}
-\sum_{n\in N}x_i^n\geqslant b_i, \forall i \in I
+\sum_{n\in N}x_i^n\geqslant b_i, \forall i \in I \tag{2}
 \end{equation}
 \begin{equation}
-\sum_{i=1}^{I}l_i x_i^n\leqslant Ly_n, \forall n\in N
+\sum_{i=1}^{I}l_i x_i^n\leqslant Ly_n, \forall n\in N \tag{3}
 \end{equation}
 \begin{equation}
-x_i^n\in \mathcal{Z}_+, \forall i \in I, \forall n\in N
+x_i^n\in \mathcal{Z}_+, \forall i \in I, \forall n\in N \tag{4}
 \end{equation}
 \begin{equation}
-y_n\in\{0,1\}, \forall n\in N
+y_n\in\{0,1\}, \forall n\in N \label{eq:y}\tag{5}
 \end{equation}
 
 
