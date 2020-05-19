@@ -115,13 +115,13 @@ a_{ip}\in\mathcal{Z}_+, \forall i\in I \label{eq:spa}\tag{14}
 \min z_1 + z_2 + z_3
 \end{equation}
 \begin{equation}
-5z_1 + 0z_2 + 0z_3 \leqslant 25
+5z_1 + 0z_2 + 0z_3 \geqslant 25
 \end{equation}
 \begin{equation}
-0z_1 + 2z_2 + 0z_3 \leqslant 20
+0z_1 + 2z_2 + 0z_3 \geqslant 20
 \end{equation}
 \begin{equation}
-0z_1 + 0z_2 + 1z_3 \leqslant 18
+0z_1 + 0z_2 + 1z_3 \geqslant 18
 \end{equation}
 \begin{equation}
 z_1, z_2, z_3 \geqslant 0
@@ -145,13 +145,13 @@ a_{1,new},a_{2,new},a_{3,new} \in \mathcal{Z}^+
 \min z_1 + z_2 + z_3 + z_4
 \end{equation}
 \begin{equation}
-5z_1 + 0z_2 + 0z_3 + 0z_4 \leqslant 25
+5z_1 + 0z_2 + 0z_3 + 0z_4 \geqslant 25
 \end{equation}
 \begin{equation}
-0z_1 + 2z_2 + 0z_3 + z_4\leqslant 20
+0z_1 + 2z_2 + 0z_3 + z_4\geqslant 20
 \end{equation}
 \begin{equation}
-0z_1 + 0z_2 + 1z_3 + z_4 \leqslant 18
+0z_1 + 0z_2 + 1z_3 + z_4 \geqslant 18
 \end{equation}
 \begin{equation}
 z_1, z_2, z_3,z_4 \geqslant 0
@@ -176,13 +176,13 @@ a_{1,new},a_{2,new},a_{3,new} \in \mathcal{Z}^+
 \min z_1 + z_2 + z_3 + z_4 + z_5
 \end{equation}
 \begin{equation}
-5z_1 + 0z_2 + 0z_3 + 0z_4 + z_5 \leqslant 25
+5z_1 + 0z_2 + 0z_3 + 0z_4 + z_5 \geqslant 25
 \end{equation}
 \begin{equation}
-0z_1 + 2z_2 + 0z_3 + z_4 + 2z_5\leqslant 20
+0z_1 + 2z_2 + 0z_3 + z_4 + 2z_5\geqslant 20
 \end{equation}
 \begin{equation}
-0z_1 + 0z_2 + 1z_3 + z_4 + 0z_5\leqslant 18
+0z_1 + 0z_2 + 1z_3 + z_4 + 0z_5\geqslant 18
 \end{equation}
 \begin{equation}
 z_1, z_2, z_3,z_4 \geqslant 0
@@ -207,13 +207,13 @@ a_{1,new},a_{2,new},a_{3,new} \in \mathcal{Z}^+
 \min z_1 + z_2 + z_3 + z_4 + z_5
 \end{equation}
 \begin{equation}
-5z_1 + 0z_2 + 0z_3 + 0z_4 + z_5 \leqslant 25
+5z_1 + 0z_2 + 0z_3 + 0z_4 + z_5 \geqslant 25
 \end{equation}
 \begin{equation}
-0z_1 + 2z_2 + 0z_3 + z_4 + 2z_5\leqslant 20
+0z_1 + 2z_2 + 0z_3 + z_4 + 2z_5\geqslant 20
 \end{equation}
 \begin{equation}
-0z_1 + 0z_2 + 1z_3 + z_4 + 0z_5\leqslant 18
+0z_1 + 0z_2 + 1z_3 + z_4 + 0z_5\geqslant 18
 \end{equation}
 \begin{equation}
 z_1, z_2, z_3,z_4 \geqslant 0
