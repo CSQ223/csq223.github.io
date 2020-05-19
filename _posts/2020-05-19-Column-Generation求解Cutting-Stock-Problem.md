@@ -1,7 +1,7 @@
 ---
 layout:     post   				    # 使用的布局（不需要改）
 title:      Column Generation求解Cutting Stock Problem		    # 标题 
-subtitle:   动态规划，状态压缩，TSP #副标题
+subtitle:   列生成，Cutting Stock Problem，GUROBI #副标题
 date:       2020-05-17 				# 时间
 author:     Lewis XU 					# 作者
 header-img: img/post-bg-hacker.jpg 	#这篇文章标题背景图片
