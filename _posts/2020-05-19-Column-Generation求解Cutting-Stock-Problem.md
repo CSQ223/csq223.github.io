@@ -56,7 +56,7 @@ subject to:
 \sum_{p\in P}a_{ip}z_p\geqslant b_i, \forall i\in I \label{eq:mpdemand}\tag{7}
 \end{equation}
 \begin{equation}
-z_p\in \mathcal{Z}_+,\forall p\in P \label{eq:mpz}\tag{6}
+z_p\in \mathcal{Z}_+,\forall p\in P \label{eq:mpz}\tag{8}
 \end{equation}
 
 公式（\ref{eq:mpobj}）是使钢管数量最小,公式(\ref{eq:mpdemand})则是满足所有的需求。
@@ -64,14 +64,14 @@ z_p\in \mathcal{Z}_+,\forall p\in P \label{eq:mpz}\tag{6}
 ##  主问题
 一次性找出所有的满足条件的模式是不现实的，我们先给定一些初始可行解$P'$，能够满足所有的需求，在通过子问题，不断求出新的可行方案，添加到$P'$中，直到达到最优解即可。
 \begin{equation}
-\min \sum_{p\in P'}z_p \label{eq:rmpobj}\tag{6}
+\min \sum_{p\in P'}z_p \label{eq:rmpobj}\tag{9}
 \end{equation}
 subject to:
 \begin{equation}
-\sum_{p\in P'}a_{ip}z_p\geqslant b_i, \forall i\in I \label{eq:rmpdemand}\tag{7}
+\sum_{p\in P'}a_{ip}z_p\geqslant b_i, \forall i\in I \label{eq:rmpdemand}\tag{10}
 \end{equation}
 \begin{equation}
-z_p\geqslant 0,\forall p\in P' \label{eq:rmpz}\tag{8}
+z_p\geqslant 0,\forall p\in P' \label{eq:rmpz}\tag{11}
 \end{equation}
 
 >如何寻找初始解？
@@ -82,14 +82,14 @@ z_p\geqslant 0,\forall p\in P' \label{eq:rmpz}\tag{8}
 子问题是求一种可行的切割方案，使得把这种方案添加进去之后（实际上就是单纯形法的入基），主问题的目标函数能下降最多，所以正如引言所说，子问题的目标函数是使主问题的校验数最小。设$\pi_i$是主问题中第$i$个约束的对偶值，所以，子问题的模型如下： 
 
 \begin{equation}
-\min 1-\sum_{i\in I}a_{ip}\pi_i \label{eq:spobj}\tag{9}
+\min 1-\sum_{i\in I}a_{ip}\pi_i \label{eq:spobj}\tag{12}
 \end{equation}
 subject to:
 \begin{equation}
-\sum_{i\in I}l_i a_{ip} \leqslant L \label{eq:splength}\tag{10}
+\sum_{i\in I}l_i a_{ip} \leqslant L \label{eq:splength}\tag{13}
 \end{equation}
 \begin{equation}
-a_{ip}\in\mathcal{Z}_+, \forall i\in I \label{eq:spa}\tag{11}
+a_{ip}\in\mathcal{Z}_+, \forall i\in I \label{eq:spa}\tag{14}
 \end{equation}
 
 公式（\ref{eq:splength}）就是限制切割方案的长度，目标函数(\ref{eq:spobj})则是主问题的检验数。
@@ -124,4 +124,17 @@ a_{ip}\in\mathcal{Z}_+, \forall i\in I \label{eq:spa}\tag{11}
 \begin{equation}
 z_1, z_2, z_3 \geqslant 0
 \end{equation}
+## 第一次迭代
+解得各个约束的对偶值$\pi = [\pi_1, \pi_2, \pi_3] = [0.2,0.5,1]$.
+所以，子问题为：
+\begin{equation}
+\min 1-0.2a_{1,new}-0.5a_{2,new}-a_{3,new}
+\end{equation}
+\begin{equation}
+3a_{1,new}+6a_{2,new}+9a_{3,new}\leqslant 17
+\end{equation}
+\begin{equation}
+a_{1,new},a_{2,new},a_{3,new} \in \mathcal{Z}^+
+\end{equation}
+
 
