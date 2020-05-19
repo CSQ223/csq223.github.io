@@ -185,7 +185,7 @@ a_{1,new},a_{2,new},a_{3,new} \in \mathcal{Z}^+
 0z_1 + 0z_2 + 1z_3 + z_4 + 0z_5\geqslant 18
 \end{equation}
 \begin{equation}
-z_1, z_2, z_3,z_4 \geqslant 0
+z_1, z_2, z_3,z_4,z_5 \geqslant 0
 \end{equation}
 
 ## 第三次迭代
@@ -216,7 +216,7 @@ a_{1,new},a_{2,new},a_{3,new} \in \mathcal{Z}^+
 0z_1 + 0z_2 + 1z_3 + z_4 + 0z_5\geqslant 18
 \end{equation}
 \begin{equation}
-z_1, z_2, z_3,z_4 \geqslant 0
+z_1, z_2, z_3,z_4,z_5 \geqslant 0
 \end{equation}
 
 所以第二次得到的主模型为最终模型，求解得到$\sum_{i=1}^{5} z_i = 24$。
