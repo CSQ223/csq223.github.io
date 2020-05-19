@@ -47,17 +47,44 @@ y_n\in\{0,1\}, \forall n\in N \label{eq:y}\tag{5}
 # Column Generation
 该问题可以等价于以下描述：一根钢管有不同的切割方案，比如17$m$可以切成5根3$m$的，也可以切成1根3$m$、2根6$m$的...。我们的目标是从这些方案中，选出消耗钢材数量最小的组合，以满足各个长度的数量。
 
-##  主问题
-我们首先确定主问题的模型。设当前一共有P种切割方案，第$p$种方案钢管切长度为$l_i$的切割数量为$a_{ip}$，第$p$种方案出现了$z_p$次。由此，主问题模型为：
+我们首先确定主问题的模型。设当前一共有P种切割方案，第$p$种方案钢管切长度为$l_i$的切割数量为$a_{ip}$，第$p$种方案出现了$z_p$次。由此，主问题模型为公式（\ref{eq:mpobj}）-（\ref{eq:mpz}）：
 \begin{equation}
-\min \sum_{p\in P}z_p \label{eq:rmpobj}\tag{6}
+\min \sum_{p\in P}z_p \label{eq:mpobj}\tag{6}
 \end{equation}
 subject to:
 \begin{equation}
-\sum_{p\in P}a_{ip}z_p\geqslant b_i, \forall i\in I \label{eq:rmpdemand}\tag{7}
+\sum_{p\in P}a_{ip}z_p\geqslant b_i, \forall i\in I \label{eq:mpdemand}\tag{7}
 \end{equation}
 \begin{equation}
-z_p\geqslant 0,\forall p\in P \label{eq:rmpz}\tag{6}
+z_p\in \mathcal{Z}_+,\forall p\in P \label{eq:mpz}\tag{6}
 \end{equation}
+
+公式（\ref{eq:mpobj}）是使钢管数量最小,公式(\ref{eq:mpdemand})则是满足所有的需求。
+
+##  主问题
+一次性找出所有的满足条件的模式是不现实的，我们先给定一些初始可行解$P'$，能够满足所有的需求，在通过子问题，不断求出新的可行方案，添加到$P'$中，直到达到最优解即可。
+\begin{equation}
+\min \sum_{p\in P'}z_p \label{eq:rmpobj}\tag{6}
+\end{equation}
+subject to:
+\begin{equation}
+\sum_{p\in P'}a_{ip}z_p\geqslant b_i, \forall i\in I \label{eq:rmpdemand}\tag{7}
+\end{equation}
+\begin{equation}
+z_p\geqslant 0,\forall p\in P' \label{eq:rmpz}\tag{6}
+\end{equation}
+
+>如何寻找初始解？只要将每根钢管按照同一种长度来切，一定能切出满足条件的组合。
+
+所以初始解的方式：
+
+1. 全切成3m以满足3m的需求，需要切$\lceil \frac{25}{\lfloor\frac{17}{3}\rfloor} \rceil$= 5根;
+2. 全切成6m以满足6m的需求，需要切$\lceil \frac{20}{\lfloor\frac{17}{6}\rfloor} \rceil$= 10根;
+3. 全切成9m以满足9m的需求，需要切$\lceil \frac{18}{\lfloor\frac{17}{9}\rfloor} \rceil$= 18根。
+
+显然，这种切割方式过于粗糙。下面，通过子问题来生成更多的可行方案，将这些粗糙的方案踢出去（实际上就是单纯形法的出基）。
+
+## 子问题
+子问题是求一种可行的切割方案，使得把这种方案添加进去之后（实际上就是单纯形法的入基），主问题的目标函数能下降最多，所以正如引言所说，子问题的目标函数是使主问题的校验数最小。所以，子问题的模型如下：
 
 
