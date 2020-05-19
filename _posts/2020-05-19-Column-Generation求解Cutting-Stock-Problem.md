@@ -38,7 +38,7 @@ subject to:
 \sum_{i=1}^{I}l_i x_i^n\leqslant Ly_n, \forall n\in N \label{eq:length}\tag{3}
 \end{equation}
 \begin{equation}
-x_i^n\in \mathcal{Z}_+, \forall i \in I, \forall n\in N \label{eq:x}\tag{4}
+x_i^n\in \mathcal{Z}^+, \forall i \in I, \forall n\in N \label{eq:x}\tag{4}
 \end{equation}
 \begin{equation}
 y_n\in\{0,1\}, \forall n\in N \label{eq:y}\tag{5}
@@ -58,7 +58,7 @@ subject to:
 \sum_{p\in P}a_{ip}z_p\geqslant b_i, \forall i\in I \label{eq:mpdemand}\tag{7}
 \end{equation}
 \begin{equation}
-z_p\in \mathcal{Z}_+,\forall p\in P \label{eq:mpz}\tag{8}
+z_p\in \mathcal{Z}^+,\forall p\in P \label{eq:mpz}\tag{8}
 \end{equation}
 
 公式（\ref{eq:mpobj}）是使钢管数量最小,公式(\ref{eq:mpdemand})则是满足所有的需求。
@@ -91,7 +91,7 @@ subject to:
 \sum_{i\in I}l_i a_{ip} \leqslant L \label{eq:splength}\tag{13}
 \end{equation}
 \begin{equation}
-a_{ip}\in\mathcal{Z}_+, \forall i\in I \label{eq:spa}\tag{14}
+a_{ip}\in\mathcal{Z}^+, \forall i\in I \label{eq:spa}\tag{14}
 \end{equation}
 
 公式（\ref{eq:splength}）就是限制切割方案的长度，目标函数(\ref{eq:spobj})则是主问题的检验数。
