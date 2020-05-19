@@ -229,5 +229,189 @@ z_1, z_2, z_3,z_4 \geqslant 0
 1. 主问题：只添加新变量以及各个约束新变量对应的系数。
 2. 子问题：只改变目标函数的系数，将满足检验数条件的解作为新变量的系数添加到主问题，不断迭代。
 
+# C++代码
+使用GUROBI求解器进行求解，请先安装。
 
+```C++
+/*
+描述:用列生成求解CuttingStock:C++11 Gurobi 8.1.1
+Author: Lewis XU
+日期:2020-05-19
+见解:Gurobi对指针很友好,大部分的API都使用指针作为参数,这也是性能比CPLEX好的地方。
+本案例中,若是使用指针,代码量会减少特别多。可以少使用很多循环语句。
+*/
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <gurobi_c++.h>
+
+using namespace std;
+class CutStock {
+public:
+    CutStock() = delete;
+    CutStock(const CutStock&) = delete;
+    ~CutStock() {
+        //手动释放资源
+        delete sub_model;
+        delete master_model;
+        delete env;
+    }
+    //带参数构造
+    CutStock(const int rollLength, const vector<double>& nDemands, const vector<double>& nAmounts)
+        :m_rollLength(rollLength), m_nDemands(nDemands), m_nAmounts(nAmounts) {
+        m_type = nDemands.size();
+        env = new GRBEnv();//new->delete
+    }
+    //建模型
+    void solve() {
+        try {
+            //1.建立松弛主问题
+            //1.1主问题模型
+            master_model = new GRBModel(*env);
+            master_model->set(GRB_IntParam_OutputFlag, false);
+            master_model->set(GRB_StringAttr_ModelName, "mastar_slack_model");
+            master_model->set(GRB_IntAttr_ModelSense, GRB_MINIMIZE);
+            //1.2添加m_type个约束
+            master_constrs = master_model->addConstrs(m_type);
+            //1.3确定每个约束的右侧值
+            for (int i = 0; i < m_type; ++i) {
+                master_constrs[i].set(GRB_CharAttr_Sense, GRB_GREATER_EQUAL);
+                master_constrs[i].set(GRB_DoubleAttr_RHS, m_nAmounts[i]);
+                ostringstream cname;
+                cname << "type" << i;
+                master_constrs[i].set(GRB_StringAttr_ConstrName, cname.str());
+            }
+
+            //1.4按列添加变量
+            cout<<"Initial solution: ";
+            for (int i = 0; i < m_type; ++i) {
+                cout<<int(m_nAmounts[i]/int(m_rollLength / m_nDemands[i]))<<" ";
+                GRBColumn column = GRBColumn();
+                column.addTerm(int(m_rollLength / m_nDemands[i]), master_constrs[i]);
+                ostringstream vname;
+                vname << "x" << i;
+                master_model->addVar(0, GRB_INFINITY, 1, GRB_CONTINUOUS, column, vname.str());
+            }
+            cout<<endl;
+            master_model->write("master0.lp");
+
+            //2.建立最小化reduce price的目标的子问题
+            //2.1建立子问题模型
+            sub_model = new GRBModel(*env);
+            sub_model->set(GRB_IntParam_OutputFlag, false);
+            sub_model->set(GRB_StringAttr_ModelName, "sub_model");
+            sub_model->set(GRB_IntAttr_ModelSense, GRB_MINIMIZE);
+            //2.2添加变量
+            sub_var = sub_model->addVars(m_type, GRB_INTEGER);
+            for (int i = 0; i < m_type; ++i) {
+                sub_var[i].set(GRB_DoubleAttr_LB, 0);
+                sub_var[i].set(GRB_DoubleAttr_UB, m_rollLength);//这里可以设置为GRB_INFINITY
+                ostringstream vname;
+                vname << "x" << i;
+                sub_var[i].set(GRB_StringAttr_VarName, vname.str());
+            }
+
+            //2.3添加约束
+            GRBLinExpr expr;
+            for (int i = 0; i < m_type; ++i) {
+                expr += sub_var[i] * m_nDemands[i];
+            }
+            sub_model->addConstr(expr <= m_rollLength, "length");
+
+            //3.迭代求解子问题和添加列、求解主问题直至没有新列
+            for (int iter = 1; ; ++iter) {
+                cout << "________________________ iter "<< iter << "________________________" << endl;
+                //3.1 求解主问题,得到约束的对偶值
+                master_model->optimize();
+                if (master_model->get(GRB_IntAttr_Status) == GRB_OPTIMAL) {
+                    cout << "master value:"<<master_model->get(GRB_DoubleAttr_ObjVal)<<endl;
+                }
+                //3.2 获得对偶值。使用指针,所以很方便,不用循环
+                double *price = master_model->get(GRB_DoubleAttr_Pi, master_constrs, m_type);
+                cout<<"dual value of master problem: [";
+                for (int i = 0; i < m_type; ++i) {
+                    cout << price[i] << " ";
+                }
+                cout<<"]"<<endl;
+
+                //3.3 设置子问题的目标函数
+                GRBLinExpr expr(-1);
+                expr.addTerms(price, sub_var, m_type);
+                sub_model->setObjective(-expr, GRB_MINIMIZE);
+
+                //3.4 求解子问题
+                sub_model->optimize();
+
+                ostringstream sub_name;
+                sub_name << "sub" << iter << ".lp";
+                sub_model->write(sub_name.str());
+                if (sub_model->get(GRB_IntAttr_Status) == GRB_OPTIMAL) {
+                    cout << "\nsub problem value:"<<
+                            sub_model->get(GRB_DoubleAttr_ObjVal) << endl;
+                    if (sub_model->get(GRB_DoubleAttr_ObjVal) > -0.000001) {
+                        break;
+                    }
+                }
+                //3.4 获取子问题的新解
+                double* pattern = sub_model->get(GRB_DoubleAttr_X, sub_var, m_type);
+                cout<<"solution of subproblem: [";
+                for(int i=0; i<m_type; ++i) {
+                    cout<<pattern[i]<<" ";
+                }
+                cout<<"]"<<endl;
+
+                //3.5 添加新列
+                ostringstream vname;
+                vname << "x" << m_type + iter;
+                master_model->addVar(0, GRB_INFINITY, 1, GRB_CONTINUOUS, m_type, master_constrs, pattern,vname.str());
+
+                ostringstream master_name;
+                master_name << "model" << iter << ".lp";
+                master_model->write(master_name.str());
+
+                delete price;
+                delete pattern;
+            }
+
+            master_var = master_model->getVars();
+            int numVars = master_model->get(GRB_IntAttr_NumVars);
+            for (int i = 0; i < numVars; ++i) {
+                master_var[i].set(GRB_CharAttr_VType, GRB_INTEGER);
+            }
+            master_model->write("result.lp");
+            master_model->optimize();
+            if (master_model->get(GRB_IntAttr_Status) == GRB_OPTIMAL) {
+                cout << "\nmaster value:" << master_model->get(GRB_DoubleAttr_ObjVal) << endl;
+            }
+        } catch (GRBException& e) {
+            cerr << e.getErrorCode() << e.getMessage() << endl;
+        }
+    }
+private:
+    //Cutting stock的变量,模型所需的参数
+    int m_rollLength;
+    //可用钢材的长度
+    int m_type;
+    vector<double> m_nDemands; //n种钢材长度需求
+    vector<double> m_nAmounts; //n种钢材需求数量
+    //GRB建模相关的变量
+    GRBEnv* env;//GRB环境
+    GRBModel *master_model,//主问题松弛模型
+    *sub_model;//子问题求新的可添加列列
+    GRBVar *master_var,//主问题的变量
+    *sub_var;//子问题的变量
+    GRBConstr *master_constrs; //主问题的约束
+};
+
+int main() {
+    int length = 17;
+    vector<double> demands = { 3, 6, 9};
+    vector<double> amounts = { 25, 20, 18 };
+    CutStock model(length, demands, amounts);
+    model.solve();
+    system("pause");
+    return 0;
+}
+
+```
 
