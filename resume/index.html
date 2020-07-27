@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>徐巍（Lewis）Resume</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML5 Resume/CV Template for Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS-->
+	<script defer src="assets/fontawesome/js/all.min.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/orbit-1.css">
+    <style>
+        .reference{
+            list-style-type:none;
+            counter-reset:sectioncounter;
+            
+        }
+        .reference li {
+            list-style-position:outside;
+        }
+        .reference>li:before {
+            content:"[" counter(sectioncounter) "]"; 
+            counter-increment:sectioncounter;
+            float: left;
+        }
+    </style>
+</head> 
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar-wrapper">
+            <div class="profile-container">
+                <img class="profile" width="100" height="140" src="assets/images/xuwei.jpg" alt="" />
+                <h3 class="name">徐巍</h3>
+                <h1 class="name">Lewis XU</h1>
+                <h3 class="tagline">运筹优化</h3>
+                <h3 class="tagline">绿色供应链</h3>
+                <h3 class="tagline">信息系统</h3>
+            </div><!--//profile-container-->
+            
+            <div class="contact-container container-block">
+                <h2 class="container-block-title">个人信息</h2>
+                <ul class="list-unstyled contact-list">
+                    <li class="email"><i class="fas fa-birthday-cake"></i>1997.03.17（湖南-郴州）</li>
+                    <li class="email"><i class="fas fa-envelope"></i><a href="mailto: xuwei3893@csu.edu.cn">xuwei3893@csu.edu.cn</a></li>
+                    <li class="phone"><i class="fas fa-phone"></i><a href="tel:+86 155-7434-9704">+86 155-7434-9704</a></li>
+                    <li class="website"><i class="fas fa-globe"></i><a href="https://lewisxu.tech" target="_blank">https://lewisxu.tech</a></li>
+                    <!--<li class="linkedin"><i class="fab fa-linkedin-in"></i><a href="#" target="_blank">linkedin.com/in/alandoe</a></li>-->
+                    <li class="github"><i class="fab fa-github"></i><a href="https://github.com/CSQ223" target="_blank">github.com/CSQ223</a></li>
+                    <li class="twitter"><i class="fas fa-address-book"></i>湖南省长沙市中南大学交通楼419室</li>
+                </ul>
+            </div><!--//contact-container-->
+            <!--
+            <div class="languages-container container-block">
+                <h2 class="container-block-title">技能</h2>
+                <ul class="list-unstyled interests-list">
+                    <li>英语：<span class="lang-desc">CET-6，阅读熟练，听说一般</span></li>
+                    <li>French <span class="lang-desc">(Professional)</span></li>
+                    <li>Spanish <span class="lang-desc">(Professional)</span></li>
+                </ul>
+            </div><!--//interests-->
+            
+            <div class="interests-container container-block">
+                <h2 class="container-block-title">兴趣爱好</h2>
+                <ul class="list-unstyled interests-list">
+                    <li>爬山</li>
+                    <li>英雄联盟</li>
+                    <li>烹饪</li>
+                    <li>阅读</li>
+                </ul>
+            </div><!--//interests-->
+            
+        </div><!--//sidebar-wrapper-->
+        
+        <div class="main-wrapper">
+            
+            <section class="section summary-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-user"></i></span>Career Profile</h2>
+                <div class="summary">
+                    <p>我立志成为一名运筹优化工程师。</p>
+                    <p>在研究生阶段，我掌握了求解器GUROBI、CPLEX以及一些开源求解器的用法，学习了运筹优化算法，做过实际的Linux项目，并且发表一篇JCR Q2 SCI论文。</p>
+                </div><!--//summary-->
+            </section><!--//section-->
+
+            <section class="section education-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-briefcase"></i></span>教育背景</h2>
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">中南大学</h3>
+                            <div class="time">2018.09 - 2021.06</div>
+                        </div><!--//upper-row-->
+                        <div class="company">硕士研究生（物流工程）</div>
+                    </div><!--//meta-->
+                    <div class="details">
+                        <p>GPA：3.3/4.0</p>
+                        <p>主要课程: 高等运筹学、高等工程数学、交通网络平衡理论</p>
+                    </div><!--//details-->
+                </div><!--//item-->
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">香港理工大学</h3>
+                            <div class="time">2019.12 - 2020.05</div>
+                        </div><!--//upper-row-->
+                        <div class="company">访问学者（物流与航运学系）</div>
+                    </div><!--//meta-->
+                    <div class="details">
+                        <p>学习整数规划求解算法：分支定界，切平面，列生成，分支定价。</p>  
+                        
+                    </div><!--//details-->
+                </div><!--//item-->
+                
+                <div class="item">
+                    <div class="meta">
+                        <div class="upper-row">
+                            <h3 class="job-title">中南林业科技大学</h3>
+                            <div class="time">2014.09 - 2018.06</div>
+                        </div><!--//upper-row-->
+                        <div class="company">工学学士（物流工程）</div>
+                    </div><!--//meta-->
+                    <div class="details">
+                        <p>排名：1/78</p>  
+                    </div><!--//details-->
+                </div><!--//item-->
+                
+            </section><!--//section-->
+            
+            <section class="section experiences-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-briefcase"></i></span>论文</h2>
+                
+                <ol class="reference">
+                    <li>
+                        <p style="text-indent:0em;padding-left:2em">Zhang, D., <strong style="border: 1px solid salmon;">Xu, W.</strong>, Ji, B., Li, S., & Liu, Y. (2020). An adaptive tabu search algorithm embedded with iterated local search and route elimination for the bike repositioning and recycling problem. Computers & Operations Research, 105035. doi:<a href="https://doi.org/10.1016/j.cor.2020.105035" target="_blank">10.1016/j.cor.2020.105035</a> </p>
+                    </li>
+                    <ul style="list-style-type: square;">
+                        <li>建立共享单车调度、回收的数学模型,优化调度过程的成本;</li>
+                        <li>基于禁忌搜索算法和迭代邻域搜索算法,设计了自适应混合算法;</li>
+                        <li>设计了路径减少策略,与禁忌搜索算法进行对比实验,平均成本减少18%.</li>
+                    </ul>
+                </ol>
+            </section><!--//section-->
+            
+            <section class="section projects-section">
+                <h2 class="section-title"><span class="icon-holder"><i class="fas fa-archive"></i></span>项目</h2>
+                <!--<div class="intro">
+                </div>//intro-->
+                <div class="item">
+                    <span class="project-title">
+                        <a href="https://github.com/CSQ223/BRRP" target="_blank">共享单车调度回收求解器</a>
+                    </span> - 
+                    <span class="project-tagline">
+                        C++/Qt 5开发的Linux GUI应用软件，求解共享单车调度回收问题。
+                    </span>
+                    <div class="details">
+                        <p style="text-align:center">
+                            <img src="assets/images/project.png" width="80%" alt="使用C++ Qt 5.14开发的Linux GUI应用软件，求解共享单车调度回收问题。"/>
+                        </p>
+                    </div><!--//details-->
+                </div><!--//item-->
+                <div class="item">
+                    <span class="project-title">
+                        <a href="https://github.com/CSQ223/Complex-Network" target="_blank">垃圾短信识别</a>
+                    </span> - 
+                    <span class="project-tagline">
+                        使用Python/sci-kit开发的垃圾短信识别模块。
+                    </span>
+                    <div class="details">
+                        <ol>
+                            <li>
+                                使用 jieba 库对语料进行分词, 将 CountVectorizor 和 TF-IDF 作为特征;
+                            </li>
+                            <li>
+                                使用 Python 的 sci-kit 中的朴素贝叶斯、SVM 对模型进行训练;
+                            </li>
+                            <li>
+                                测试数据表明准确率最低有97%.
+                            </li>
+                        </ol>
+                    </div><!--//details-->
+                </div><!--//item-->
+            </section><!--//section-->
+
+            <section class="skills-section section">
+                <h2 class="section-title">
+                    <span class="icon-holder">
+                        <i class="fas fa-rocket"></i>
+                    </span>
+                    外语
+                </h2>
+                <div class="skillset">        
+                    <div class="item">
+                        <h3 class="level-title">英语</h3>
+                        CET-6 (451)，阅读熟练，听说略弱     
+                    </div><!--//item-->
+                </div>  
+            </section><!--//skills-section-->
+            
+            <section class="skills-section section">
+                <h2 class="section-title">
+                    <span class="icon-holder">
+                        <i class="fas fa-rocket"></i>
+                    </span>
+                    编程技能
+                </h2>
+                <div class="skillset">        
+                    <div class="item">
+                        <h3 class="level-title">C/C++</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 90%" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                               
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">Java</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 80%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                              
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">Tex</h3>
+                        <div class="progress level-bar">
+						    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 90%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                 
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <h3 class="level-title">Python</h3>
+                        <div class="progress level-bar">
+							    <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 90%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>                                
+                    </div><!--//item-->
+                </div>  
+            </section><!--//skills-section-->
+            
+        </div><!--//main-body-->
+    </div>
+ 
+    <footer class="footer">
+        <div class="text-center">
+            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://lewisxu.tech" target="_blank">徐巍 （Lewis）</a> for Resume.</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+        
+</body>
+</html> 
+
