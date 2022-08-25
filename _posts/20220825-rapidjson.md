@@ -1,3 +1,17 @@
+---
+layout:     post
+title:      RapidJson使用方式
+subtitle:   RapidJson使用方式
+date:       2022-8-25
+author:     BY
+header-img: img/post-bg-ios9-web.jpg
+catalog: true
+tags:
+    - C++
+    - RapidJson
+    - Json
+---
+
 # 1.初始化一个Document对象
 ```
 Document d;
