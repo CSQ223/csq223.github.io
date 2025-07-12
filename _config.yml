@@ -2,16 +2,16 @@
 title: Lewis XU
 SEOTitle: Lewis XU 博客
 header-img: img/post-bg-desk.jpg
-email: xuwei3893@gmail.com
-description: "My heart is free and, have courage to follow it!"
-keyword: "Lewis XU博客, Lewis XU, 徐巍"
+email: lewis.xuwei@outlook.com
+description: "My heart is free and have courage to follow it!"
+keyword: "Lewis XU 博客, Lewis XU, 徐巍"
 url: "https://csq223.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/CSQ223/csq223.github.io.git" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Goals determine what you going to be!"
+sidebar-about-description: "Goals determine what you are going to be!"
 sidebar-avatar: /img/selfie.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
